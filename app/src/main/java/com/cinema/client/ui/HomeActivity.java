@@ -17,10 +17,6 @@ import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.Toast;
 
 import com.cinema.client.R;
 import com.cinema.client.ui.fragments.now.NowFragment;
@@ -58,7 +54,7 @@ public class HomeActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_user);
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
