@@ -15,49 +15,67 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="245dp"
+        app:srcCompat="@mipmap/ic_daddy"
         tools:srcCompat="@tools:sample/avatars[11]" />
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:lineSpacingExtra="30sp"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="@string/nav_header_hello"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="36sp"
-        tools:text="Привет!" />
+        android:layout_weight="1"
+        android:gravity="bottom"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView"
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="30sp"
+            android:paddingTop="@dimen/nav_header_vertical_spacing"
+            android:text="@string/hello"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="#000000"
+            android:textSize="36sp"
+            tools:text="Привет!" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="8sp"
+            android:paddingTop="@dimen/nav_header_vertical_spacing"
+            android:paddingBottom="@dimen/activity_horizontal_margin"
+            android:text="@string/statement"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="#000000"
+            android:textSize="30sp"
+            tools:text="Что-то я тебя не узнаю." />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:lineSpacingExtra="30sp"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:paddingBottom="@dimen/nav_header_height"
-        android:text="@string/statement"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="30sp"
-        tools:text="Что-то я тебя не узнаю." />
+        android:layout_weight="1"
+        android:gravity="bottom"
+        android:orientation="vertical">
 
+        <Button
+            android:id="@+id/buttonLog"
+            android:layout_width="match_parent"
+            android:layout_height="@android:dimen/notification_large_icon_height"
+            android:background="#0D99A3"
+            android:text="Войти"
+            android:textColor="#FFFFFF" />
 
-
-    <Button
-        android:id="@+id/buttonLog"
-        android:layout_width="match_parent"
-        android:layout_height="@android:dimen/notification_large_icon_height"
-        android:background="#0D9903"
-        android:text="Войти"
-        android:textColor="@color/colorPrimary" />
-
-    <Button
-        android:id="@+id/buttonReg"
-        android:layout_width="match_parent"
-        android:layout_height="@android:dimen/notification_large_icon_height"
-        android:background="@drawable/outline_background"
-        android:text="Зарегистрироваться" />
+        <Button
+            android:id="@+id/buttonReg"
+            android:layout_width="match_parent"
+            android:layout_height="@android:dimen/notification_large_icon_height"
+            android:background="@drawable/outline_background"
+            android:text="Зарегистрироваться"
+            android:textColor="#4CAF50" />
+    </LinearLayout>
 
 
 </LinearLayout>

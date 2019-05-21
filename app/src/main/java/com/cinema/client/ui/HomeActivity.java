@@ -54,16 +54,7 @@ public class HomeActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        mAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
-
-        if(user == null ) {
-            setContentView(R.layout.activity_main_guest);
-        }
-        else{
-            setContentView(R.layout.activity_main_user);
-        }
+        setContentView(R.layout.activity_main_guest);
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -167,33 +158,27 @@ public class HomeActivity extends AppCompatActivity
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
 
-        if (user != null) {
-            if (id == R.id.nav_films) {
-                // Handle the camera action
-            } else if (id == R.id.nav_soon) {
+        if (id == R.id.nav_films) {
+            // Handle the camera action
+        } else if (id == R.id.nav_soon) {
 
-            } else if (id == R.id.nav_bonus) {
+        } else if (id == R.id.nav_bonus) {
 
-            } else if (id == R.id.nav_office) {
-
-            } else if (id == R.id.nav_help) {
-
-            } else if (id == R.id.nav_contacts) {
-
-            } else if (id == R.id.nav_about) {
-                FirebaseAuth.getInstance().signOut();
-
-            }
-        }else{
-            if(id == R.id.buttonLog){
+        } else if (id == R.id.nav_office) {
+            if(user == null ) {
                 Intent intent = new Intent(HomeActivity.this, EmailActivity.class);
                 startActivity(intent);
             }
-            if(id == R.id.buttonReg){
-                Intent intent = new Intent(HomeActivity.this, RegisterActivity.class);
-                startActivity(intent);
-            }
+
+        } else if (id == R.id.nav_help) {
+
+        } else if (id == R.id.nav_contacts) {
+
+        } else if (id == R.id.nav_about) {
+            FirebaseAuth.getInstance().signOut();
+
         }
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
