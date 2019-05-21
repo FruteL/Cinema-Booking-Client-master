@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:lineSpacingExtra="30sp"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="@string/nav_header_title"
+        android:text="@string/nav_header_hello"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="36sp"
@@ -36,15 +36,16 @@
         android:lineSpacingExtra="30sp"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:paddingBottom="@dimen/nav_header_height"
-        android:text="@string/nav_header_title"
+        android:text="@string/statement"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="30sp"
         tools:text="Что-то я тебя не узнаю." />
 
 
+
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonLog"
         android:layout_width="match_parent"
         android:layout_height="@android:dimen/notification_large_icon_height"
         android:background="#0D9903"
@@ -52,7 +53,7 @@
         android:textColor="@color/colorPrimary" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonReg"
         android:layout_width="match_parent"
         android:layout_height="@android:dimen/notification_large_icon_height"
         android:background="@drawable/outline_background"
