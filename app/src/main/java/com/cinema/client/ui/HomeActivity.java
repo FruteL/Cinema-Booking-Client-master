@@ -26,6 +26,8 @@ import com.cinema.client.R;
 import com.cinema.client.ui.fragments.now.NowFragment;
 import com.cinema.client.ui.fragments.soon.SoonFragment;
 import com.cinema.client.ui.fragments.tickets.TicketsFragment;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +36,7 @@ import java.util.List;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -44,6 +47,8 @@ public class HomeActivity extends AppCompatActivity
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
+    private FirebaseAuth mAuth;
+
 
     /**
      * The {@link ViewPager} that will host the section contents.
@@ -54,6 +59,7 @@ public class HomeActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -86,16 +92,7 @@ public class HomeActivity extends AppCompatActivity
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
         tabLayout.setupWithViewPager(mViewPager);
 
-        Button btnJoin = (Button)findViewById(R.id.btnjoin);
-        btnJoin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (v.getId() == R.id.btnjoin) {
-                    Intent intent = new Intent(HomeActivity.this, EmailActivity.class);
-                    startActivity(intent);
-                }
-            }
-        });
+
     }
 
 
@@ -162,6 +159,9 @@ public class HomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+
         if (id == R.id.nav_films) {
             // Handle the camera action
         } else if (id == R.id.nav_soon) {
@@ -169,12 +169,17 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_bonus) {
 
         } else if (id == R.id.nav_office) {
+            if(user == null ) {
+                Intent intent = new Intent(HomeActivity.this, EmailActivity.class);
+                startActivity(intent);
+            }
 
         } else if (id == R.id.nav_help) {
 
         } else if (id == R.id.nav_contacts) {
 
         } else if (id == R.id.nav_about) {
+            FirebaseAuth.getInstance().signOut();
 
         }
 

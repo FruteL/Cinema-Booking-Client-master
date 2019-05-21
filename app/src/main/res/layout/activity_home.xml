@@ -8,12 +8,6 @@
     android:fitsSystemWindows="true"
     tools:context=".ui.HomeActivity">
 
-    <Button
-        android:id="@+id/btnjoin"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="600dip"
-        android:text="Войти" />
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
