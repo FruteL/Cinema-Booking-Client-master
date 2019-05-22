@@ -17,6 +17,9 @@ import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.cinema.client.R;
 import com.cinema.client.ui.fragments.now.NowFragment;
@@ -58,13 +61,27 @@ public class HomeActivity extends AppCompatActivity
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
 
-        if(user == null ) {
+        if(user == null) {
             setContentView(R.layout.activity_main_guest);
-        }
-        else{
+            findViewById(R.id.buttonLog).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(HomeActivity.this, EmailActivity.class);
+                    startActivity(intent);
+                    recreate();
+                }
+            });
+            findViewById(R.id.buttonReg).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(HomeActivity.this, RegisterActivity.class);
+                    startActivity(intent);
+                    recreate();
+                }
+            });
+        }else{
             setContentView(R.layout.activity_main_user);
         }
-
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -72,12 +89,11 @@ public class HomeActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);// HERE ERROR
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -96,7 +112,6 @@ public class HomeActivity extends AppCompatActivity
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
         tabLayout.setupWithViewPager(mViewPager);
-
 
     }
 
@@ -119,6 +134,7 @@ public class HomeActivity extends AppCompatActivity
         if (id == R.id.action_settings) {
             return true;
         }
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -182,22 +198,18 @@ public class HomeActivity extends AppCompatActivity
 
             } else if (id == R.id.nav_about) {
                 FirebaseAuth.getInstance().signOut();
+                recreate();
+
 
             }
-        }else{
-            if(id == R.id.buttonLog){
-                Intent intent = new Intent(HomeActivity.this, EmailActivity.class);
-                startActivity(intent);
-            }
-            if(id == R.id.buttonReg){
-                Intent intent = new Intent(HomeActivity.this, RegisterActivity.class);
-                startActivity(intent);
-            }
         }
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
 
 
 }
