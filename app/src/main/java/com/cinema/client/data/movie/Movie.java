@@ -1,14 +1,21 @@
 package com.cinema.client.data.movie;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
 import java.util.Random;
 
-public class Movie {
+public class Movie implements Serializable {
     private long id;
     private String title;
     private String shortDescription;
     private String fullDescription;
     private String posterUrl;
     private long releaseDateInMills;
+
+    public Movie() {
+    }
 
     public Movie(long id, String title, String shortDescription, String fullDescription, String posterUrl, long releaseDateInMills) {
         this.id = id;
@@ -19,7 +26,7 @@ public class Movie {
         this.releaseDateInMills = releaseDateInMills;
     }
 
-    public Movie(String title, String shortDescription, String fullDescription, String posterUrl) {
+    public Movie(String title, String shortDescription, String fullDescription, String posterUrl){
         this.id = new Random().nextLong();
         this.title = title;
         this.shortDescription = shortDescription;
@@ -74,5 +81,17 @@ public class Movie {
 
     public void setReleaseDateInMills(long releaseDateInMills) {
         this.releaseDateInMills = releaseDateInMills;
+    }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", shortDescription='" + shortDescription + '\'' +
+                ", fullDescription='" + fullDescription + '\'' +
+                ", posterUrl='" + posterUrl + '\'' +
+                ", releaseDateInMills=" + releaseDateInMills +
+                '}';
     }
 }

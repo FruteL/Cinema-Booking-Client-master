@@ -20,11 +20,18 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.cinema.client.R;
+import com.cinema.client.data.DataBase;
+import com.cinema.client.data.movie.Movie;
 import com.cinema.client.ui.fragments.now.NowFragment;
 import com.cinema.client.ui.fragments.soon.SoonFragment;
 import com.cinema.client.ui.fragments.tickets.TicketsFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +53,6 @@ public class HomeActivity extends AppCompatActivity
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private FirebaseAuth mAuth;
 
-
     /**
      * The {@link ViewPager} that will host the section contents.
      */
@@ -58,6 +64,7 @@ public class HomeActivity extends AppCompatActivity
 
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
+
 
         if(user == null ) {
             setContentView(R.layout.activity_main_guest);
