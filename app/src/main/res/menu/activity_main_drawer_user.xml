@@ -5,14 +5,6 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_films"
-            android:icon="@drawable/ic_movie_black_24dp"
-            android:title="Список фильмов" />
-        <item
-            android:id="@+id/nav_soon"
-            android:icon="@drawable/ic_event_available_black_24dp"
-            android:title="Скоро в прокате" />
-        <item
             android:id="@+id/nav_bonus"
             android:icon="@drawable/ic_attach_money_black_24dp"
             android:title="Акции и бонусы" />

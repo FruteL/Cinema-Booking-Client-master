@@ -191,11 +191,7 @@ public class HomeActivity extends AppCompatActivity
         FirebaseUser user = mAuth.getCurrentUser();
 
         if (user != null) {
-            if (id == R.id.nav_films) {
-                // Handle the camera action
-            } else if (id == R.id.nav_soon) {
-
-            } else if (id == R.id.nav_bonus) {
+            if (id == R.id.nav_bonus) {
 
             } else if (id == R.id.nav_office) {
 
