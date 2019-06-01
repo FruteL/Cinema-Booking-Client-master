@@ -20,6 +20,7 @@ import java.util.List;
 public class DataBase {
 
     List<Movie> movies = new ArrayList<>();
+    List<Movie> soon = new ArrayList<>();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     int j = 0;
 
@@ -58,6 +59,36 @@ public class DataBase {
         createMovie();
         System.out.println(movies.isEmpty());
         return movies;
+    }
+
+    public void createSoon() {
+        db.collection("Soon").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                for(QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots){
+                    Movie movie = documentSnapshot.toObject(Movie.class);
+                    String name = movie.getTitle();
+                    String p = movie.getPosterUrl();
+                    System.out.println(name);
+                    System.out.println(p);
+
+                    Intent i = new Intent("SOON_MOVIES");
+
+                    soon.add(movie);
+
+                    Bundle bundle = new Bundle();
+
+                    bundle.putSerializable("soon", soon.get(j));
+                    i.putExtra("bundle2",bundle);
+
+                    db.getApp().getApplicationContext().sendBroadcast(i);
+                    System.out.println(soon);
+                    j++;
+
+                }
+
+            }
+        });
     }
 
 }

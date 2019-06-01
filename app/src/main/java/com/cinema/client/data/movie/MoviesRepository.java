@@ -40,4 +40,8 @@ public class MoviesRepository {
 
 
     }
+    public static void generateSoon(){
+        new DataBase().createSoon();
+
+    }
 }

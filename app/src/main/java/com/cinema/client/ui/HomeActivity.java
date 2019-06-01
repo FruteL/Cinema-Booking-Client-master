@@ -108,7 +108,7 @@ public class HomeActivity extends AppCompatActivity
 
         mSectionsPagerAdapter.addItem(new NowFragment(), "Сейчас в прокате");
         mSectionsPagerAdapter.addItem(new SoonFragment(), "Скоро в прокате");
-        mSectionsPagerAdapter.addItem(new TicketsFragment(), "Билеты");
+
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
