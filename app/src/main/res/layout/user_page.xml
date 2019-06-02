@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/movie_poster"
+        android:layout_width="105dp"
+        android:layout_height="114dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars[3]" />
+
+    <TextView
+        android:id="@+id/user_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/movie_poster"
+        app:layout_constraintTop_toTopOf="@+id/movie_poster"
+        tools:text="User name" />
+
+    <TextView
+        android:id="@+id/user_telephone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/movie_poster"
+        app:layout_constraintTop_toTopOf="@+id/movie_poster"
+        tools:text="User telephone" />
+
+    <TextView
+        android:id="@+id/user_email"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/movie_poster"
+        app:layout_constraintTop_toTopOf="@+id/movie_poster"
+        tools:text="User Email" />
+
+    <TextView
+        android:id="@+id/movie_info"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/movie_poster"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/movie_poster"
+        app:layout_constraintTop_toBottomOf="@+id/movie_name"
+        tools:text="Movie info . . . . . . . . . . " />
+
+
+    <TextView
+        android:id="@+id/card_text"
+        android:layout_width="106dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginBottom="8dp"
+        android:text="Credit Card"
+        app:layout_constraintBottom_toTopOf="@+id/ticket"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/movie_poster"
+        app:layout_constraintVertical_bias="0.455" />
+
+    <TextView
+        android:id="@+id/ticket"
+        android:layout_width="74dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="156dp"
+        android:text="Ticket"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/movie_poster" />
+
+    <TextView
+        android:id="@+id/favorit_movie"
+        android:layout_width="103dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="228dp"
+        android:text="Favorit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/movie_poster" />
+
+    <ImageView
+        android:id="@+id/img_fav"
+        android:layout_width="56dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="148dp"
+        android:src="@drawable/ic_ticket"
+        app:layout_constraintStart_toEndOf="@+id/ticket"
+        app:layout_constraintTop_toBottomOf="@+id/movie_poster" />
+
+    <ImageView
+        android:id="@+id/img_card"
+        android:layout_width="58dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="68dp"
+        android:src="@drawable/ic_credit_card_black_24dp"
+        app:layout_constraintStart_toEndOf="@+id/card_text"
+        app:layout_constraintTop_toBottomOf="@+id/movie_info" />
+
+    <ImageView
+        android:id="@+id/img_favorit"
+        android:layout_width="58dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="220dp"
+        android:src="@drawable/ic_favorite_24dp"
+        app:layout_constraintStart_toEndOf="@+id/card_text"
+        app:layout_constraintTop_toBottomOf="@+id/movie_info" />
+
+</android.support.constraint.ConstraintLayout>
