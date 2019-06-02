@@ -1,6 +1,7 @@
 package com.cinema.client.ui;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -73,6 +74,7 @@ public class HomeActivity extends AppCompatActivity
                 public void onClick(View v) {
                     Intent intent = new Intent(HomeActivity.this, EmailActivity.class);
                     startActivity(intent);
+                    recreate();
                 }
             });
             findViewById(R.id.buttonReg).setOnClickListener(new View.OnClickListener() {
@@ -80,6 +82,7 @@ public class HomeActivity extends AppCompatActivity
                 public void onClick(View v) {
                     Intent intent = new Intent(HomeActivity.this, RegisterActivity.class);
                     startActivity(intent);
+                    recreate();
                 }
             });
 
