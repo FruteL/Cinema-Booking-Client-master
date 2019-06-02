@@ -17,7 +17,12 @@ import java.util.List;
 
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewHolder> {
 
+    public interface OnMovieClickedListener{
+        void onMovieClicked(Movie movie);
+    }
+
     private List<Movie> movies = new ArrayList<>();
+    private OnMovieClickedListener clickListener;
 
     public void addItem(Movie newMovie){
         movies.add(newMovie);
@@ -30,6 +35,10 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
         }
     }
 
+    public void setOnMovieClickedListener(OnMovieClickedListener movieClickedListener){
+        this.clickListener = movieClickedListener;
+    }
+
     @NonNull
     @Override
     public MovieViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -39,7 +48,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
 
     @Override
     public void onBindViewHolder(@NonNull MovieViewHolder viewHolder, int position) {
-        viewHolder.bindData(movies.get(position));
+        viewHolder.bindData(movies.get(position), clickListener);
     }
 
     @Override
@@ -56,9 +65,15 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
             posterImageView = itemView.findViewById(R.id.movie_item_poster);
         }
 
-        public void bindData(Movie movie){
+        public void bindData(final Movie movie, final OnMovieClickedListener clickListener){
             titleTextView.setText(movie.getTitle());
             Picasso.get().load(movie.getPosterUrl()).into(posterImageView);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    clickListener.onMovieClicked(movie);
+                }
+            });
         }
     }
 
