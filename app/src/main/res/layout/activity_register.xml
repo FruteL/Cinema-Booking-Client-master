@@ -3,19 +3,18 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:background="@drawable/fon">
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" android:background="#fff">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/icon"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="0dp"
-            android:background="#fa2255"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/img_fon" />
+            android:scaleType="centerCrop" />
 
                <!-- Registration Form -->
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -84,6 +83,7 @@
             <!-- Register Button -->
             <Button
                 android:id="@+id/btnRegister2"
+                style="@style/btn"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dip"
