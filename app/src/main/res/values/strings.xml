@@ -7,6 +7,10 @@
     <string name="tab_text_1">Tab 1</string>
     <string name="nav_header_hello">Привет</string>
     <string name="statement">Что-то я тебя не узнаю</string>
+    <string name="avaliable_s">Свободные места</string>
+    <string name="sold_s">Проданные места</string>
+    <string name="your_s">Выбранные места</string>
+    <string name="screen">Экран</string>
     <string name="tab_text_2">Tab 2</string>
     <string name="tab_text_3">Tab 3</string>
     <string name="action_settings">Settings</string>

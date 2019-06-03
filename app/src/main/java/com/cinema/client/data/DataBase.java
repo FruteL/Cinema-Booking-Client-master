@@ -38,10 +38,6 @@ public class DataBase {
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 for(QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots){
                     Movie movie = documentSnapshot.toObject(Movie.class);
-                    String name = movie.getTitle();
-                    String p = movie.getPosterUrl();
-                    System.out.println(name);
-                    System.out.println(p);
 
                     Intent i = new Intent("NEW_MOVIES");
 
@@ -74,10 +70,6 @@ public class DataBase {
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 for(QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots){
                     Movie movie = documentSnapshot.toObject(Movie.class);
-                    String name = movie.getTitle();
-                    String p = movie.getPosterUrl();
-                    System.out.println(name);
-                    System.out.println(p);
 
                     Intent i = new Intent("SOON_MOVIES");
 
@@ -121,6 +113,28 @@ public class DataBase {
                         Log.w(TAG, "Error adding document", e);
                     }
                 });
+    }
+
+    public void getUser(final String email){
+        db.collection("Users").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                    User user = documentSnapshot.toObject(User.class);
+                    if(user.getEmail().equals(email)){
+                        Intent i = new Intent("USERS");
+
+                        Bundle b = new Bundle();
+
+                        b.putSerializable("users", user);
+                        i.putExtra("bundleUser",b);
+
+                        db.getApp().getApplicationContext().sendBroadcast(i);
+
+                    }
+                }
+            }
+        });
     }
 
 }

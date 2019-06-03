@@ -23,6 +23,7 @@ import android.view.View;
 import com.cinema.client.R;
 import com.cinema.client.data.DataBase;
 import com.cinema.client.data.movie.Movie;
+import com.cinema.client.ui.InfoAboutCinema.InfoCinema;
 import com.cinema.client.ui.fragments.now.NowFragment;
 import com.cinema.client.ui.fragments.soon.SoonFragment;
 import com.cinema.client.ui.fragments.tickets.TicketsFragment;
@@ -67,6 +68,7 @@ public class HomeActivity extends AppCompatActivity
         FirebaseUser user = mAuth.getCurrentUser();
 
 
+
         if(user == null ) {
             setContentView(R.layout.activity_main_guest);
             findViewById(R.id.buttonLog).setOnClickListener(new View.OnClickListener() {
@@ -74,7 +76,7 @@ public class HomeActivity extends AppCompatActivity
                 public void onClick(View v) {
                     Intent intent = new Intent(HomeActivity.this, EmailActivity.class);
                     startActivity(intent);
-                    recreate();
+
                 }
             });
             findViewById(R.id.buttonReg).setOnClickListener(new View.OnClickListener() {
@@ -82,7 +84,7 @@ public class HomeActivity extends AppCompatActivity
                 public void onClick(View v) {
                     Intent intent = new Intent(HomeActivity.this, RegisterActivity.class);
                     startActivity(intent);
-                    recreate();
+
                 }
             });
 
@@ -111,6 +113,7 @@ public class HomeActivity extends AppCompatActivity
 
         mSectionsPagerAdapter.addItem(new NowFragment(), "Сейчас в прокате");
         mSectionsPagerAdapter.addItem(new SoonFragment(), "Скоро в прокате");
+
 
 
         // Set up the ViewPager with the sections adapter.
@@ -197,15 +200,15 @@ public class HomeActivity extends AppCompatActivity
             if (id == R.id.nav_bonus) {
 
             } else if (id == R.id.nav_office) {
-
+                FirebaseAuth.getInstance().signOut();
+                recreate();
             } else if (id == R.id.nav_help) {
 
             } else if (id == R.id.nav_contacts) {
 
             } else if (id == R.id.nav_about) {
-                FirebaseAuth.getInstance().signOut();
-                recreate();
-
+                Intent intent  = new Intent(HomeActivity.this, InfoCinema.class);
+                startActivity(intent);
             }
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
