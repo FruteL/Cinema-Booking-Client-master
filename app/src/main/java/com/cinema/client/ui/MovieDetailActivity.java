@@ -2,8 +2,10 @@ package com.cinema.client.ui;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -11,6 +13,7 @@ import android.widget.VideoView;
 import com.cinema.client.R;
 import com.cinema.client.data.movie.Movie;
 import com.google.firebase.auth.FirebaseAuth;
+import com.pierfrancescosoffritti.androidyoutubeplayer.player.YouTubePlayerView;
 import com.squareup.picasso.Picasso;
 
 public class MovieDetailActivity extends AppCompatActivity {
@@ -25,7 +28,7 @@ public class MovieDetailActivity extends AppCompatActivity {
     private TextView tvMovieInfo;
     private TextView tvMovieLabel;
     private Button btnBuyTicket;
-    private VideoView videoViewTrailer;
+    private YouTubePlayerView videoViewTrailer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +43,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         tvMovieInfo = (TextView)findViewById(R.id.movie_info);
         tvMovieLabel = (TextView)findViewById(R.id.movie_trailer_label);
         btnBuyTicket = (Button)findViewById(R.id.movie_buy_ticket);
-        videoViewTrailer = (VideoView)findViewById(R.id.movie_trailer_video);
+        videoViewTrailer = (YouTubePlayerView)findViewById(R.id.movie_trailer_video);
 
         Movie movie = (Movie)getIntent().getBundleExtra(ARG_KEY_MOVIE_BUNDLE).getSerializable(ARG_KEY_MOVIE);
 
@@ -49,10 +52,24 @@ public class MovieDetailActivity extends AppCompatActivity {
             finish();
         }
 
+        setTitle(movie.getTitle());
+
+
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         Picasso.get().load(movie.getPosterUrl()).into(imgMoviePoster);
         tvMovieName.setText(movie.getTitle());
         tvMovieAbout.setText(movie.getShortDescription());
         tvMovieInfo.setText(movie.getFullDescription());
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == android.R.id.home){
+            finish();
+            return true;
+        }
+        return false;
+    }
 }

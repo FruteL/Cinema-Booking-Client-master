@@ -3,6 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 28
     defaultConfig {
+        multiDexEnabled true
         applicationId "com.cinema.client"
         minSdkVersion 19
         targetSdkVersion 28
@@ -30,5 +31,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:17.0.0'
     implementation 'com.google.firebase:firebase-storage:17.0.0'
     implementation 'com.google.firebase:firebase-firestore:19.0.1'
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:8.0.1'
 }
 apply plugin: 'com.google.gms.google-services'
