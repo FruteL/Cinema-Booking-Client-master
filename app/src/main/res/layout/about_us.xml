@@ -19,11 +19,11 @@
         android:id="@+id/tv_name"
         android:layout_width="245dp"
         android:layout_height="75dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="64dp"
-        android:textSize="30sp"
-        android:text="About us title"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="24dp"
         android:gravity="center"
+        android:text="About us title"
+        android:textSize="30sp"
         app:layout_constraintStart_toStartOf="@+id/cinema_poster"
         app:layout_constraintTop_toBottomOf="@+id/cinema_poster" />
 
@@ -32,10 +32,11 @@
         android:layout_width="349dp"
         android:layout_height="229dp"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="160dp"
-        android:text="About us"
+        android:layout_marginTop="96dp"
         android:gravity="center|top"
+        android:text="About us"
         android:textStyle="italic"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/cinema_poster"
         app:layout_constraintTop_toBottomOf="@+id/cinema_poster" />
 
