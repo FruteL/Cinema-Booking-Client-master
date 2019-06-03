@@ -80,7 +80,7 @@ public class EmailActivity extends AppCompatActivity implements View.OnClickList
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
                     Toast.makeText(EmailActivity.this, "Aвторизация успешна", Toast.LENGTH_SHORT).show();
-                    finish();
+                    startActivity(new Intent(EmailActivity.this, HomeActivity.class));
                 }else
                     Toast.makeText(EmailActivity.this, "Aвторизация провалена", Toast.LENGTH_SHORT).show();
 

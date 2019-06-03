@@ -12,20 +12,22 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:srcCompat="@tools:sample/avatars[11]" />
+        android:layout_height="169dp"
+        app:srcCompat="@mipmap/ic_grandpa" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:lineSpacingExtra="30sp"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="@string/nav_header_title"
+        android:text="@string/nav_header_hello"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="#4CAF50"
         android:textSize="36sp"
         tools:text="Привет!" />
 
@@ -36,27 +38,29 @@
         android:lineSpacingExtra="30sp"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:paddingBottom="@dimen/nav_header_height"
-        android:text="@string/nav_header_title"
+        android:text="@string/statement"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="#4CAF50"
         android:textSize="30sp"
         tools:text="Что-то я тебя не узнаю." />
 
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonLog"
         android:layout_width="match_parent"
         android:layout_height="@android:dimen/notification_large_icon_height"
         android:background="#0D9903"
         android:text="Войти"
-        android:textColor="@color/colorPrimary" />
+        android:textColor="#FFFFFF" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonReg"
         android:layout_width="match_parent"
         android:layout_height="@android:dimen/notification_large_icon_height"
         android:background="@drawable/outline_background"
-        android:text="Зарегистрироваться" />
+        android:text="Зарегистрироваться"
+        android:textColor="#4CAF50" />
 
 
 </LinearLayout>

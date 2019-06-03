@@ -5,12 +5,23 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:fillViewport="true"
-    tools:context=".ui.EmailActivity">
+    tools:context=".ui.EmailActivity"
+    android:background="@drawable/fon">
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="#ffffff">
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="0dp"
+
+            android:scaleType="centerCrop">
+        </ImageView>
+
 
         <!--  Header  Starts-->
 
@@ -51,6 +62,7 @@
             <!-- Login button -->
             <Button
                 android:id="@+id/btnLogin"
+                style="@style/btn"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dip"
@@ -58,6 +70,7 @@
             <!-- Link to Registration Screen -->
             <Button
                 android:id="@+id/btnRegister"
+                style="@style/btn"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dip"

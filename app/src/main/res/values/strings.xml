@@ -5,6 +5,12 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_home">ONPU Cinema</string>
     <string name="tab_text_1">Tab 1</string>
+    <string name="nav_header_hello">Привет</string>
+    <string name="statement">Что-то я тебя не узнаю</string>
+    <string name="avaliable_s">Свободные места</string>
+    <string name="sold_s">Проданные места</string>
+    <string name="your_s">Выбранные места</string>
+    <string name="screen">Экран</string>
     <string name="tab_text_2">Tab 2</string>
     <string name="tab_text_3">Tab 3</string>
     <string name="action_settings">Settings</string>
@@ -33,6 +39,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Меню</string>
+    <string name="hello">Привет!</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
 </resources>

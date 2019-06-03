@@ -1,6 +1,7 @@
 package com.cinema.client.ui;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -17,13 +18,22 @@ import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.cinema.client.R;
+import com.cinema.client.data.DataBase;
+import com.cinema.client.data.movie.Movie;
+import com.cinema.client.ui.InfoAboutCinema.InfoCinema;
 import com.cinema.client.ui.fragments.now.NowFragment;
 import com.cinema.client.ui.fragments.soon.SoonFragment;
 import com.cinema.client.ui.fragments.tickets.TicketsFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +55,6 @@ public class HomeActivity extends AppCompatActivity
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private FirebaseAuth mAuth;
 
-
     /**
      * The {@link ViewPager} that will host the section contents.
      */
@@ -54,7 +63,35 @@ public class HomeActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_user);
+
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+
+
+
+        if(user == null ) {
+            setContentView(R.layout.activity_main_guest);
+            findViewById(R.id.buttonLog).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(HomeActivity.this, EmailActivity.class);
+                    startActivity(intent);
+
+                }
+            });
+            findViewById(R.id.buttonReg).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(HomeActivity.this, RegisterActivity.class);
+                    startActivity(intent);
+
+                }
+            });
+
+        }
+        else{
+            setContentView(R.layout.activity_main_user);
+        }
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -76,7 +113,8 @@ public class HomeActivity extends AppCompatActivity
 
         mSectionsPagerAdapter.addItem(new NowFragment(), "Сейчас в прокате");
         mSectionsPagerAdapter.addItem(new SoonFragment(), "Скоро в прокате");
-        mSectionsPagerAdapter.addItem(new TicketsFragment(), "Билеты");
+
+
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
@@ -158,27 +196,21 @@ public class HomeActivity extends AppCompatActivity
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
 
-        if (id == R.id.nav_films) {
-            // Handle the camera action
-        } else if (id == R.id.nav_soon) {
+        if (user != null) {
+            if (id == R.id.nav_bonus) {
 
-        } else if (id == R.id.nav_bonus) {
+            } else if (id == R.id.nav_office) {
+                FirebaseAuth.getInstance().signOut();
+                recreate();
+            } else if (id == R.id.nav_help) {
 
-        } else if (id == R.id.nav_office) {
-            if(user == null ) {
-                Intent intent = new Intent(HomeActivity.this, EmailActivity.class);
+            } else if (id == R.id.nav_contacts) {
+
+            } else if (id == R.id.nav_about) {
+                Intent intent  = new Intent(HomeActivity.this, InfoCinema.class);
                 startActivity(intent);
             }
-
-        } else if (id == R.id.nav_help) {
-
-        } else if (id == R.id.nav_contacts) {
-
-        } else if (id == R.id.nav_about) {
-            FirebaseAuth.getInstance().signOut();
-
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

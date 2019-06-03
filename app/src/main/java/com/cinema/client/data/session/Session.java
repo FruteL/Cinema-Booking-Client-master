@@ -6,6 +6,10 @@ public class Session {
     private long movieId;
     private long showTimeInMills;
 
+    public Session(){
+
+    }
+
     public Session(long id, long hallId, long movieId, long showTimeInMills) {
         this.id = id;
         this.hallId = hallId;
