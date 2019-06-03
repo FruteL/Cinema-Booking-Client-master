@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/movie_poster"
+        android:layout_width="416dp"
+        android:layout_height="248dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars[3]" />
+
+    <TextView
+        android:id="@+id/about_us"
+        android:layout_width="284dp"
+        android:layout_height="257dp"
+        android:text="About us"
+        tools:layout_editor_absoluteX="74dp"
+        tools:layout_editor_absoluteY="256dp" />
+
+
+</android.support.constraint.ConstraintLayout>

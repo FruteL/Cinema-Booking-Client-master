@@ -38,12 +38,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         ETpassword2 = (EditText) findViewById(R.id.reg_password_again);
 
 
-        findViewById(R.id.btnRegister).setOnClickListener(this);
+        findViewById(R.id.btnRegister2).setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        if(view.getId() == R.id.btnRegister)
+        if(view.getId() == R.id.btnRegister2)
         {
             if(ETpassword.getText().toString().equals(ETpassword2.getText().toString())&& !(ETemail.getText().toString().isEmpty())) {
                 registration(ETemail.getText().toString(), ETpassword.getText().toString());
@@ -63,10 +63,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful())
                 {
-                    mAuth.signInWithEmailAndPassword(email, password);
                     new DataBase().createUser(ETemail.getText().toString(), ETname.getText().toString());
                     Toast.makeText(RegisterActivity.this, "Регистрация успешна", Toast.LENGTH_SHORT).show();
-                    finish();
+                    mAuth.signInWithEmailAndPassword(email, password);
+                    startActivity(new Intent(RegisterActivity.this, HomeActivity.class));
                 }
                 else
                     Toast.makeText(RegisterActivity.this, "Регистрация провалена", Toast.LENGTH_SHORT).show();
