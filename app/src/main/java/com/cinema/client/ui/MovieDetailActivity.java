@@ -60,7 +60,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Picasso.get().load(movie.getPosterUrl()).into(imgMoviePoster);
+        Picasso.get().load(movie.getVerticalPosterUrl()).into(imgMoviePoster);
         tvMovieName.setText(movie.getTitle());
         tvMovieAbout.setText(movie.getShortDescription());
         tvMovieInfo.setText(movie.getFullDescription());

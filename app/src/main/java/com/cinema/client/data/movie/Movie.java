@@ -12,6 +12,25 @@ public class Movie implements Serializable {
     private String shortDescription;
     private String fullDescription;
     private String posterUrl;
+    private String verticalPosterUrl;
+    private String videoUrl;
+
+    public String getVerticalPosterUrl() {
+        return verticalPosterUrl;
+    }
+
+    public void setVerticalPosterUrl(String verticalPosterUrl) {
+        this.verticalPosterUrl = verticalPosterUrl;
+    }
+
+    public String getVideoUrl() {
+        return videoUrl;
+    }
+
+    public void setVideoUrl(String videoUrl) {
+        this.videoUrl = videoUrl;
+    }
+
     private long releaseDateInMills;
 
     public Movie() {
