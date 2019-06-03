@@ -1,8 +1,9 @@
 package com.cinema.client.data;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class User {
+public class User implements Serializable {
     private String nickname;
     private String email;
     private String phone;

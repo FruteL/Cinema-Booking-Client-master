@@ -16,6 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
 
 public class InfoCinema extends AppCompatActivity {
+
     private ImageView imgCinemaPoster;
     private TextView tvAboutCinema;
     private TextView tv_name;
@@ -24,6 +25,7 @@ public class InfoCinema extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.about_us);
 
         imgCinemaPoster = (ImageView) findViewById(R.id.cinema_poster);
         tvAboutCinema = (TextView) findViewById(R.id.about_us);
