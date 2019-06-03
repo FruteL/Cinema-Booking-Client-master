@@ -1,8 +1,10 @@
 package com.cinema.client.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ScrollView;
@@ -62,6 +64,14 @@ public class MovieDetailActivity extends AppCompatActivity {
         tvMovieName.setText(movie.getTitle());
         tvMovieAbout.setText(movie.getShortDescription());
         tvMovieInfo.setText(movie.getFullDescription());
+
+        btnBuyTicket.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MovieDetailActivity.this,BookTicketActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
