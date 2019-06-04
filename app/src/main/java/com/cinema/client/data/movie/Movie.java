@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.Random;
 
 public class Movie implements Serializable {
-    private long id;
+    private int id;
     private String title;
     private String shortDescription;
     private String fullDescription;
@@ -36,7 +36,7 @@ public class Movie implements Serializable {
     public Movie() {
     }
 
-    public Movie(long id, String title, String shortDescription, String fullDescription, String posterUrl, long releaseDateInMills) {
+    public Movie(int id, String title, String shortDescription, String fullDescription, String posterUrl, long releaseDateInMills) {
         this.id = id;
         this.title = title;
         this.shortDescription = shortDescription;
@@ -46,7 +46,6 @@ public class Movie implements Serializable {
     }
 
     public Movie(String title, String shortDescription, String fullDescription, String posterUrl){
-        this.id = new Random().nextLong();
         this.title = title;
         this.shortDescription = shortDescription;
         this.fullDescription = fullDescription;
@@ -54,11 +53,11 @@ public class Movie implements Serializable {
         this.releaseDateInMills = System.currentTimeMillis();
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

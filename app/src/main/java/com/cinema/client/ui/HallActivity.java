@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.cinema.client.R;
+import com.cinema.client.data.User;
+import com.cinema.client.data.session.Session;
 
 public class HallActivity extends AppCompatActivity {
     public int dist;
@@ -18,6 +20,10 @@ public class HallActivity extends AppCompatActivity {
     TextView amcdist;
     TextView regaldist;
     TextView landmark;
+    public static final String ARG_KEY_SESSION_BUNDLE = "session_key_bundle";
+    public static final String ARG_KEY_SESSION = "session_key";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +32,9 @@ public class HallActivity extends AppCompatActivity {
         Bundle b = getIntent().getExtras();
         final int movie = b.getInt("movie_id");
         final String date = b.getString("date");
+
+        Session session = (Session) getIntent().getBundleExtra(ARG_KEY_SESSION_BUNDLE).getSerializable(ARG_KEY_SESSION);
+
 //
 //        Button a1 = (Button) findViewById(R.id.button9);
 //        Button AMC2 = (Button) findViewById(R.id.AMC2);

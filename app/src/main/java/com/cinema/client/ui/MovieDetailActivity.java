@@ -12,8 +12,12 @@ import android.widget.Toast;
 
 import com.cinema.client.R;
 import com.cinema.client.data.movie.Movie;
+import com.cinema.client.ui.InfoAboutCinema.UserInfoActivity;
 import com.google.firebase.auth.FirebaseAuth;
+import com.pierfrancescosoffritti.androidyoutubeplayer.player.YouTubePlayer;
 import com.pierfrancescosoffritti.androidyoutubeplayer.player.YouTubePlayerView;
+import com.pierfrancescosoffritti.androidyoutubeplayer.player.listeners.AbstractYouTubePlayerListener;
+import com.pierfrancescosoffritti.androidyoutubeplayer.player.listeners.YouTubePlayerInitListener;
 import com.squareup.picasso.Picasso;
 
 public class MovieDetailActivity extends AppCompatActivity {
@@ -45,7 +49,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         btnBuyTicket = (Button)findViewById(R.id.movie_buy_ticket);
         videoViewTrailer = (YouTubePlayerView)findViewById(R.id.movie_trailer_video);
 
-        Movie movie = (Movie)getIntent().getBundleExtra(ARG_KEY_MOVIE_BUNDLE).getSerializable(ARG_KEY_MOVIE);
+        final Movie movie = (Movie)getIntent().getBundleExtra(ARG_KEY_MOVIE_BUNDLE).getSerializable(ARG_KEY_MOVIE);
 
         if(movie == null){
             Toast.makeText(this,"Can`t get movie",Toast.LENGTH_SHORT).show();
@@ -54,11 +58,22 @@ public class MovieDetailActivity extends AppCompatActivity {
 
         setTitle(movie.getTitle());
 
+        videoViewTrailer.initialize(new YouTubePlayerInitListener() {
+            @Override
+            public void onInitSuccess(final YouTubePlayer initializedYouTubePlayer) {
+                initializedYouTubePlayer.addListener(new AbstractYouTubePlayerListener() {
+                    @Override
+                    public void onReady() {
+                        initializedYouTubePlayer.loadVideo(movie.getVideoUrl(), 0);
+                    }
+                });
+            }
+        }, true);
 
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Picasso.get().load(movie.getPosterUrl()).into(imgMoviePoster);
+        Picasso.get().load(movie.getVerticalPosterUrl()).into(imgMoviePoster);
         tvMovieName.setText(movie.getTitle());
         tvMovieAbout.setText(movie.getShortDescription());
         tvMovieInfo.setText(movie.getFullDescription());
@@ -67,6 +82,9 @@ public class MovieDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MovieDetailActivity.this, DateActivity.class);
+                Bundle args = new Bundle();
+                args.putSerializable(DateActivity.ARG_KEY_DATE, movie);
+                intent.putExtra(DateActivity.ARG_KEY_DATE_BUNDLE,args);
                 startActivity(intent);
             }
         });

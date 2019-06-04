@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.cinema.client.data.movie.Movie;
+import com.cinema.client.data.session.Session;
 import com.cinema.client.ui.adapters.MoviesAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -132,6 +133,29 @@ public class DataBase {
                     }
                 }
             }
+        });
+    }
+
+    public void getSession(final int MovieId, final String date){
+        db.collection("Session").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                    Session session = documentSnapshot.toObject(Session.class);
+                    if(MovieId == session.getMovieId() && date.equals(session.getDate())){
+                        Intent i = new Intent("SESSION");
+
+                        Bundle b = new Bundle();
+
+                        b.putSerializable("session", session);
+                        i.putExtra("sessionBundle",b);
+
+                        db.getApp().getApplicationContext().sendBroadcast(i);
+
+                    }
+                    }
+                }
+
         });
     }
 

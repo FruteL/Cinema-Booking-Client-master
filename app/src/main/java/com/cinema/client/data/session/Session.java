@@ -1,10 +1,40 @@
 package com.cinema.client.data.session;
 
-public class Session {
+import java.io.Serializable;
+import java.util.List;
+
+public class Session implements Serializable {
     private long id;
     private long hallId;
     private long movieId;
     private long showTimeInMills;
+    private String date;
+    private String time;
+    private List<Integer> seats;
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public List<Integer> getSeats() {
+        return seats;
+    }
+
+    public void setSeats(List<Integer> seats) {
+        this.seats = seats;
+    }
 
     public Session(){
 
