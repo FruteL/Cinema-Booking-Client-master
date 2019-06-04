@@ -105,7 +105,7 @@ public class DateActivity extends  AppCompatActivity {
 
                     for(Session s : listSession) {
                         if (s.getDate().equals(date)) {
-                            Intent intent = new Intent(DateActivity.this, HallActivity.class);
+                            Intent intent = new Intent(DateActivity.this, BookTicketActivity.class);
                             Bundle args = new Bundle();
                             args.putSerializable(HallActivity.ARG_KEY_SESSION, session);
                             intent.putExtra(HallActivity.ARG_KEY_SESSION_BUNDLE, args);
