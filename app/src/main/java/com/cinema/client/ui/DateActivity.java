@@ -24,7 +24,9 @@ import com.cinema.client.data.movie.Movie;
 import com.cinema.client.data.session.Session;
 import com.cinema.client.ui.InfoAboutCinema.UserInfoActivity;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 
 public class DateActivity extends  AppCompatActivity {
@@ -37,8 +39,9 @@ public class DateActivity extends  AppCompatActivity {
     public String date;
     DatePickerDialog dpd;
     static final int DATE_PICKER_ID = 1111;
-    int id;
+    int mid;
     Session session;
+    List<Session> listSession = new ArrayList<>();
     public static final String ARG_KEY_DATE_BUNDLE = "date_key_bundle";
     public static final String ARG_KEY_DATE = "date_key";
 
@@ -52,6 +55,14 @@ public class DateActivity extends  AppCompatActivity {
         TextView tv = (TextView) findViewById(R.id.textView8);
 
         Bundle b = getIntent().getExtras();
+
+        Movie movie = (Movie) getIntent().getBundleExtra(ARG_KEY_DATE_BUNDLE).getSerializable(ARG_KEY_DATE);
+        mid = movie.getId();
+
+        MyReceiver receiver = new MyReceiver();
+        DateActivity.this.registerReceiver(receiver, new IntentFilter("SESSION"));
+        new DataBase().getSession(mid);
+
         //final int movie = b.getInt("booktype");
 
 
@@ -86,26 +97,24 @@ public class DateActivity extends  AppCompatActivity {
         });
 
         Button btw = (Button) findViewById(R.id.next);
-        Movie movie = (Movie) getIntent().getBundleExtra(ARG_KEY_DATE_BUNDLE).getSerializable(ARG_KEY_DATE);
-        id = movie.getId();
+
         btw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(date!=null) {
-                    MyReceiver receiver = new MyReceiver();
-                    DateActivity.this.registerReceiver(receiver, new IntentFilter("SESSION"));
-                    new DataBase().getSession(id, date); //Получи фильм, из предидущего окна, и вставь его вместо 1
-                    if(session!=null){
-                    Intent intent = new Intent(DateActivity.this, HallActivity.class);
-                    Bundle args = new Bundle();
-                    args.putSerializable(HallActivity.ARG_KEY_SESSION, session);
-                    intent.putExtra(HallActivity.ARG_KEY_SESSION_BUNDLE,args);
-                    //intent.putExtra("movie_id", movie);
-                    //intent.putExtra("date", date);
-                    startActivity(intent);
-                    }
-                    else {
-                        finish();
+
+                    for(Session s : listSession) {
+                        if (s.getDate().equals(date)) {
+                            Intent intent = new Intent(DateActivity.this, HallActivity.class);
+                            Bundle args = new Bundle();
+                            args.putSerializable(HallActivity.ARG_KEY_SESSION, session);
+                            intent.putExtra(HallActivity.ARG_KEY_SESSION_BUNDLE, args);
+                            //intent.putExtra("movie_id", movie);
+                            //intent.putExtra("date", date);
+                            startActivity(intent);
+                        } else {
+                            Toast.makeText(getApplicationContext(),"Сеансы на это число на этот фильм не найдены", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
                 else
@@ -164,6 +173,7 @@ public class DateActivity extends  AppCompatActivity {
 
             Bundle b = intent.getBundleExtra("sessionBundle");
             session = (Session) b.getSerializable("session");
+            listSession.add(session);
 
         }
     }

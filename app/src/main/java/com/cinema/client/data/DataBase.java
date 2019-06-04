@@ -136,13 +136,13 @@ public class DataBase {
         });
     }
 
-    public void getSession(final int MovieId, final String date){
+    public void getSession(final int MovieId){
         db.collection("Session").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
                     Session session = documentSnapshot.toObject(Session.class);
-                    if(MovieId == session.getMovieId() && date.equals(session.getDate())){
+                    if(MovieId == session.getMovieId()){
                         Intent i = new Intent("SESSION");
 
                         Bundle b = new Bundle();
