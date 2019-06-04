@@ -1,6 +1,9 @@
 package com.cinema.client.ui;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
@@ -22,8 +25,10 @@ import android.view.View;
 
 import com.cinema.client.R;
 import com.cinema.client.data.DataBase;
+import com.cinema.client.data.User;
 import com.cinema.client.data.movie.Movie;
 import com.cinema.client.ui.InfoAboutCinema.InfoCinema;
+import com.cinema.client.ui.InfoAboutCinema.UserInfoActivity;
 import com.cinema.client.ui.fragments.now.NowFragment;
 import com.cinema.client.ui.fragments.soon.SoonFragment;
 import com.cinema.client.ui.fragments.tickets.TicketsFragment;
@@ -36,12 +41,14 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    User users;
 
 
     /**
@@ -67,8 +74,6 @@ public class HomeActivity extends AppCompatActivity
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
 
-
-
         if(user == null ) {
             setContentView(R.layout.activity_main_guest);
             findViewById(R.id.buttonLog).setOnClickListener(new View.OnClickListener() {
@@ -91,6 +96,9 @@ public class HomeActivity extends AppCompatActivity
         }
         else{
             setContentView(R.layout.activity_main_user);
+            MyReceiver receiver = new MyReceiver();
+            HomeActivity.this.registerReceiver(receiver, new IntentFilter("USERS"));
+            new DataBase().getUser(user.getEmail());
         }
 
 
@@ -198,10 +206,14 @@ public class HomeActivity extends AppCompatActivity
 
         if (user != null) {
             if (id == R.id.nav_bonus) {
-
-            } else if (id == R.id.nav_office) {
                 FirebaseAuth.getInstance().signOut();
                 recreate();
+            } else if (id == R.id.nav_office) {
+                Intent intent = new Intent(HomeActivity.this, UserInfoActivity.class);
+                Bundle args = new Bundle();
+                args.putSerializable(UserInfoActivity.ARG_KEY_USER, users);
+                intent.putExtra(UserInfoActivity.ARG_KEY_USER_BUNDLE,args);
+                startActivity(intent);
             } else if (id == R.id.nav_help) {
 
             } else if (id == R.id.nav_contacts) {
@@ -214,6 +226,16 @@ public class HomeActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    class MyReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            Bundle b = intent.getBundleExtra("bundleUser");
+            users = (User) b.getSerializable("users");
+
+        }
     }
 
 

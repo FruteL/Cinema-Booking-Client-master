@@ -96,8 +96,6 @@ public class DataBase {
         user.put("email", email);
         user.put("phone", "");
         user.put("card", "");
-        user.put("favorite", "");
-        user.put("ticket", "");
 
         db.collection("Users")
                 .add(user)
