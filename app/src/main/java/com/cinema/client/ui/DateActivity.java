@@ -23,6 +23,7 @@ import com.cinema.client.data.User;
 import com.cinema.client.data.movie.Movie;
 import com.cinema.client.data.session.Session;
 import com.cinema.client.ui.InfoAboutCinema.UserInfoActivity;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -31,6 +32,7 @@ import java.util.List;
 
 public class DateActivity extends  AppCompatActivity {
 
+    private FirebaseAuth mAuth;
     private TextView Output;
     private Button changeDate;
     private int year;
@@ -49,6 +51,8 @@ public class DateActivity extends  AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
+        mAuth = FirebaseAuth.getInstance();
 
         Output = (TextView) findViewById(R.id.tvDate);
         changeDate = (Button) findViewById(R.id.btnChangeDate);
