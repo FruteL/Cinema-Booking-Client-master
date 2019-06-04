@@ -22,19 +22,6 @@
             android:layout_marginStart="16dp" android:layout_marginTop="16dp"/>
 
         <TextView
-            android:id="@+id/movie_date"
-            android:layout_width="111dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            android:gravity="right"
-            app:layout_constraintStart_toEndOf="@+id/movie_name"
-            app:layout_constraintTop_toTopOf="@+id/movie_poster"
-            tools:text="date" />
-
-        <TextView
             android:id="@+id/movie_name"
             android:layout_width="111dp"
             android:layout_height="20dp"
@@ -57,13 +44,11 @@
 
         <Button
             android:id="@+id/movie_buy_ticket"
-            style="@style/btn"
+            android:background="@drawable/ic_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
             android:text="Buy ticket"
+            android:textSize="11sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/about_movie" />
