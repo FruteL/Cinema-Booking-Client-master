@@ -2,24 +2,18 @@ package com.cinema.client.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.VideoView;
 
 import com.cinema.client.R;
 import com.cinema.client.data.movie.Movie;
 import com.google.firebase.auth.FirebaseAuth;
-import com.pierfrancescosoffritti.androidyoutubeplayer.player.YouTubePlayer;
 import com.pierfrancescosoffritti.androidyoutubeplayer.player.YouTubePlayerView;
-import com.pierfrancescosoffritti.androidyoutubeplayer.player.listeners.AbstractYouTubePlayerListener;
-import com.pierfrancescosoffritti.androidyoutubeplayer.player.listeners.YouTubePlayerInitListener;
 import com.squareup.picasso.Picasso;
 
 public class MovieDetailActivity extends AppCompatActivity {
@@ -51,24 +45,12 @@ public class MovieDetailActivity extends AppCompatActivity {
         btnBuyTicket = (Button)findViewById(R.id.movie_buy_ticket);
         videoViewTrailer = (YouTubePlayerView)findViewById(R.id.movie_trailer_video);
 
-        final Movie movie = (Movie)getIntent().getBundleExtra(ARG_KEY_MOVIE_BUNDLE).getSerializable(ARG_KEY_MOVIE);
+        Movie movie = (Movie)getIntent().getBundleExtra(ARG_KEY_MOVIE_BUNDLE).getSerializable(ARG_KEY_MOVIE);
 
         if(movie == null){
             Toast.makeText(this,"Can`t get movie",Toast.LENGTH_SHORT).show();
             finish();
         }
-
-        videoViewTrailer.initialize(new YouTubePlayerInitListener() {
-            @Override
-            public void onInitSuccess(final YouTubePlayer initializedYouTubePlayer) {
-                initializedYouTubePlayer.addListener(new AbstractYouTubePlayerListener() {
-                    @Override
-                    public void onReady() {
-                        initializedYouTubePlayer.loadVideo(movie.getVideoUrl(), 0);
-                    }
-                });
-            }
-        }, true);
 
         setTitle(movie.getTitle());
 
@@ -76,7 +58,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Picasso.get().load(movie.getVerticalPosterUrl()).into(imgMoviePoster);
+        Picasso.get().load(movie.getPosterUrl()).into(imgMoviePoster);
         tvMovieName.setText(movie.getTitle());
         tvMovieAbout.setText(movie.getShortDescription());
         tvMovieInfo.setText(movie.getFullDescription());
@@ -84,7 +66,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         btnBuyTicket.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MovieDetailActivity.this,BookTicketActivity.class);
+                Intent intent = new Intent(MovieDetailActivity.this, DateActivity.class);
                 startActivity(intent);
             }
         });
