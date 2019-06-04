@@ -31,6 +31,7 @@
         <activity android:name=".ui.MovieDetailActivity" />
         <activity android:name=".ui.DateActivity"/>
         <activity android:name=".ui.HallActivity"/>
+        <activity android:name=".ui.InfoAboutCinema.ContactsCinema"/>
     </application>
 
 </manifest>

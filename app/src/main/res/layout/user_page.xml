@@ -8,13 +8,6 @@
     android:background="@drawable/fon">
 
     <ImageView
-        android:id="@+id/icon"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
         android:id="@+id/movie_poster"
         android:layout_width="105dp"
         android:layout_height="114dp"
@@ -86,27 +79,36 @@
         android:layout_marginBottom="8dp"
         android:text="Credit Card"
         app:layout_constraintBottom_toTopOf="@+id/ticket"
+        app:layout_constraintEnd_toStartOf="@+id/icon"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/movie_poster"
-        app:layout_constraintVertical_bias="0.455" />
+        app:layout_constraintVertical_bias="0.434" />
 
     <TextView
         android:id="@+id/ticket"
-        android:layout_width="74dp"
-        android:layout_height="19dp"
+        android:layout_width="106dp"
+        android:layout_height="18dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="156dp"
+        android:layout_marginEnd="321dp"
         android:text="Ticket"
+        app:layout_constraintEnd_toEndOf="@+id/icon"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/movie_poster" />
 
     <TextView
         android:id="@+id/favorit_movie"
-        android:layout_width="103dp"
-        android:layout_height="21dp"
+        android:layout_width="123dp"
+        android:layout_height="22dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="228dp"
+        android:layout_marginEnd="73dp"
         android:text="Favorit"
+        app:layout_constraintEnd_toEndOf="@+id/img_favorit"
+        app:layout_constraintEnd_toStartOf="@+id/img_favorit"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/movie_poster" />
 
@@ -134,21 +136,22 @@
         android:id="@+id/img_favorit"
         android:layout_width="58dp"
         android:layout_height="36dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="220dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="224dp"
         android:src="@drawable/ic_favorite_24dp"
         app:layout_constraintStart_toEndOf="@+id/card_text"
         app:layout_constraintTop_toBottomOf="@+id/movie_info" />
 
     <Button
         android:id="@+id/logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="344dp"
+        android:layout_width="403dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="144dp"
+        android:background="#538755"
         android:text="Logout"
-        app:layout_constraintStart_toEndOf="@+id/card_text"
-        app:layout_constraintTop_toBottomOf="@+id/movie_info" />
+        app:layout_constraintStart_toStartOf="@+id/icon"
+        app:layout_constraintTop_toBottomOf="@+id/img_favorit" />
 
 
 </android.support.constraint.ConstraintLayout>

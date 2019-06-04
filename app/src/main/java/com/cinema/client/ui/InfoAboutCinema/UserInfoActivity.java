@@ -54,8 +54,9 @@ public class UserInfoActivity extends AppCompatActivity {
         card.setText(user.getCard());
         //ticket.setText(user.getTicket().getSession().getMovieId());
         //favorite.setText(user.getFavorite());
-        ticket.setText("НАДО ПЕРЕДАТЬ");
-        favorite.setText("НАДО ПЕРЕДАТЬ");
+        card.setText("Оно тут будет");
+        ticket.setText("Нужно");
+        favorite.setText("Скоро будет");
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

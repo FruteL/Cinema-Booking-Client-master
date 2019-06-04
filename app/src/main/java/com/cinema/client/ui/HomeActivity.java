@@ -27,6 +27,7 @@ import com.cinema.client.R;
 import com.cinema.client.data.DataBase;
 import com.cinema.client.data.User;
 import com.cinema.client.data.movie.Movie;
+import com.cinema.client.ui.InfoAboutCinema.ContactsCinema;
 import com.cinema.client.ui.InfoAboutCinema.InfoCinema;
 import com.cinema.client.ui.InfoAboutCinema.UserInfoActivity;
 import com.cinema.client.ui.fragments.now.NowFragment;
@@ -217,7 +218,8 @@ public class HomeActivity extends AppCompatActivity
             } else if (id == R.id.nav_help) {
 
             } else if (id == R.id.nav_contacts) {
-
+                Intent intent  = new Intent(HomeActivity.this, ContactsCinema.class);
+                startActivity(intent);
             } else if (id == R.id.nav_about) {
                 Intent intent  = new Intent(HomeActivity.this, InfoCinema.class);
                 startActivity(intent);
