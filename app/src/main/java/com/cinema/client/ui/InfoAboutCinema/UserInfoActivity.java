@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,7 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class UserInfoActivity extends AppCompatActivity {
     public static final String ARG_KEY_USER_BUNDLE = "user_key_bundle";
     public static final String ARG_KEY_USER = "user_key";
-
+    private ImageView userPhoto;
     private TextView username;
     private TextView phone;
     private TextView email;
@@ -37,6 +38,7 @@ public class UserInfoActivity extends AppCompatActivity {
         ticket = (TextView)findViewById(R.id.ticket);
         favorite = (TextView)findViewById(R.id.favorit_movie);
         exit = (Button)findViewById(R.id.logout);
+        userPhoto = (ImageView)findViewById(R.id.user_poster);
 
         final User user = (User)getIntent().getBundleExtra(ARG_KEY_USER_BUNDLE).getSerializable(ARG_KEY_USER);
 
