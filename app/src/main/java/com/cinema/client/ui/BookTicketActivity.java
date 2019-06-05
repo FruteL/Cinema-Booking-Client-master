@@ -1,20 +1,28 @@
 package com.cinema.client.ui;
 
 import android.graphics.Color;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.cinema.client.R;
+import com.cinema.client.data.DataBase;
+import com.cinema.client.data.session.Session;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BookTicketActivity extends AppCompatActivity {
 
-    private ArrayList<Integer> bookedPlaces = new ArrayList<>();
+    private List<Integer> bookedPlaces = new ArrayList<>();
     private ArrayList<Integer> yourPlaces = new ArrayList<>();
     private Button btnBookPlaces;
+    public static final String ARG_KEY_SESSION_BUNDLE = "session_key_bundle";
+    public static final String ARG_KEY_SESSION = "session_key";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +36,8 @@ public class BookTicketActivity extends AppCompatActivity {
             }
         });
 
+        Session session = (Session) getIntent().getBundleExtra(ARG_KEY_SESSION_BUNDLE).getSerializable(ARG_KEY_SESSION);
+        bookedPlaces = session.getSeats();
 
 
         final Button place_1_1 = (Button) findViewById(R.id.place_1_1);
@@ -47,6 +57,7 @@ public class BookTicketActivity extends AppCompatActivity {
         final Button place_3_3 = (Button) findViewById(R.id.place_3_3);
         final Button place_3_4 = (Button) findViewById(R.id.place_3_4);
         final Button place_3_5 = (Button) findViewById(R.id.place_3_5);
+
 
         if(checkPlace(1)){
             place_1_1.setBackgroundColor(Color.RED);
@@ -334,7 +345,9 @@ public class BookTicketActivity extends AppCompatActivity {
     }
 
     private void bookTickets(){
-
+        new DataBase().updateSession(bookedPlaces);
+        recreate();
+        Toast.makeText(getApplicationContext(),"Успешно забранировано", Toast.LENGTH_SHORT).show();
     }
 
     private boolean checkYourPlace(int number){

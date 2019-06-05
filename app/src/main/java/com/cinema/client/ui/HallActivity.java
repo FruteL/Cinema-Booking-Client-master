@@ -30,10 +30,12 @@ public class HallActivity extends AppCompatActivity {
         setContentView(R.layout.activity_book_ticket);
 
         Bundle b = getIntent().getExtras();
-        final int movie = b.getInt("movie_id");
-        final String date = b.getString("date");
+        //final int movie = b.getInt("movie_id");
+        //final String date = b.getString("date");
 
         Session session = (Session) getIntent().getBundleExtra(ARG_KEY_SESSION_BUNDLE).getSerializable(ARG_KEY_SESSION);
+
+
 
 //
 //        Button a1 = (Button) findViewById(R.id.button9);

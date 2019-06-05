@@ -116,6 +116,7 @@ public class DateActivity extends  AppCompatActivity {
                             //intent.putExtra("movie_id", movie);
                             //intent.putExtra("date", date);
                             startActivity(intent);
+                            finish();
                         } else {
                             Toast.makeText(getApplicationContext(),"Сеансы на это число на этот фильм не найдены", Toast.LENGTH_SHORT).show();
                         }
