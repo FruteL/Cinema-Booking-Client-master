@@ -207,8 +207,7 @@ public class HomeActivity extends AppCompatActivity
 
         if (user != null) {
             if (id == R.id.nav_bonus) {
-                FirebaseAuth.getInstance().signOut();
-                recreate();
+
             } else if (id == R.id.nav_office) {
                 Intent intent = new Intent(HomeActivity.this, UserInfoActivity.class);
                 Bundle args = new Bundle();
