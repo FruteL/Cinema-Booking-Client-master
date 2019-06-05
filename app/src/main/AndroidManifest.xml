@@ -18,6 +18,7 @@
         <activity android:name=".ui.InfoAboutCinema.InfoCinema" />
         <activity android:name=".ui.EmailActivity" />
         <activity android:name=".ui.RegisterActivity" />
+        <activity android:name=".ui.MovieDetailSoonActivity" />
         <activity
             android:name=".ui.HomeActivity"
             android:label="@string/title_activity_home"

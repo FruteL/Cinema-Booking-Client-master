@@ -17,6 +17,7 @@ import com.cinema.client.R;
 import com.cinema.client.data.movie.Movie;
 import com.cinema.client.data.movie.MoviesRepository;
 import com.cinema.client.ui.MovieDetailActivity;
+import com.cinema.client.ui.MovieDetailSoonActivity;
 import com.cinema.client.ui.adapters.MoviesAdapter;
 import com.cinema.client.ui.fragments.now.NowFragment;
 
@@ -39,7 +40,7 @@ public class SoonFragment extends Fragment {
         adapter.setOnMovieClickedListener(new MoviesAdapter.OnMovieClickedListener() {
             @Override
             public void onMovieClicked(Movie movie) {
-                Intent intent = new Intent(getActivity(), MovieDetailActivity.class);
+                Intent intent = new Intent(getActivity(), MovieDetailSoonActivity.class);
                 Bundle args = new Bundle();
                 args.putSerializable(MovieDetailActivity.ARG_KEY_MOVIE,movie);
                 intent.putExtra(MovieDetailActivity.ARG_KEY_MOVIE_BUNDLE,args);
