@@ -57,6 +57,7 @@ public class DataBase {
 
             }
         });
+
     }
 
     public List<Movie> getMovies() {
@@ -157,6 +158,12 @@ public class DataBase {
                 }
 
         });
+    }
+
+    public void updateSession(List<Integer> list){
+        final Map<String, Object> session = new HashMap<>();
+            session.put("seats", list);
+        db.collection("Session").document("M1H1").update(session);
     }
 
 }
