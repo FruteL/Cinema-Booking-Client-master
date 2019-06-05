@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cinema.client.R;
@@ -38,6 +39,7 @@ public class BookTicketActivity extends AppCompatActivity {
 
         Session session = (Session) getIntent().getBundleExtra(ARG_KEY_SESSION_BUNDLE).getSerializable(ARG_KEY_SESSION);
         bookedPlaces = session.getSeats();
+
 
 
         final Button place_1_1 = (Button) findViewById(R.id.place_1_1);
