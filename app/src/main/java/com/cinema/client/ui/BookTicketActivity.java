@@ -23,6 +23,13 @@ public class BookTicketActivity extends AppCompatActivity {
     private Button btnBookPlaces;
     public static final String ARG_KEY_SESSION_BUNDLE = "session_key_bundle";
     public static final String ARG_KEY_SESSION = "session_key";
+    private TextView tvY;
+    private TextView tvC;
+    private TextView tvN;
+    private TextView row1;
+    private TextView row2;
+    private TextView row3;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +46,20 @@ public class BookTicketActivity extends AppCompatActivity {
 
         Session session = (Session) getIntent().getBundleExtra(ARG_KEY_SESSION_BUNDLE).getSerializable(ARG_KEY_SESSION);
         bookedPlaces = session.getSeats();
+        tvY = (TextView)findViewById(R.id.tv_1);
+        tvC = (TextView)findViewById(R.id.tv_2);
+        tvN = (TextView)findViewById(R.id.tv_3);
 
+        tvY.setText("Свободно");
+        tvC.setText("Выбрано");
+        tvN.setText("Занято");
 
+        row1 = (TextView)findViewById(R.id.tv_row_1);
+        row2 = (TextView)findViewById(R.id.tv_row_2);
+        row3 = (TextView)findViewById(R.id.tv_row_3);
+        row1.setText("Ряд 1");
+        row2.setText("Ряд 2");
+        row3.setText("Ряд 3");
 
         final Button place_1_1 = (Button) findViewById(R.id.place_1_1);
         final Button place_1_2 = (Button) findViewById(R.id.place_1_2);

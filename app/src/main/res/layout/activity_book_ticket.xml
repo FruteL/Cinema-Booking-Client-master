@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.BookTicketActivity">
+    tools:context=".ui.BookTicketActivity"
+    android:background="#eceabe">
 
     <TextView
         android:id="@+id/textView2"
@@ -242,11 +243,12 @@
 
     <Button
         android:id="@+id/btn_boock"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="126dp"
+        android:layout_height="47dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="196dp"
         android:layout_marginEnd="8dp"
+        android:background="#c1876b"
         android:text="Book ticket(s)"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
@@ -258,8 +260,8 @@
     <!--Add new-->
     <TextView
         android:id="@+id/tv_1"
-        android:layout_width="52dp"
-        android:layout_height="19dp"
+        android:layout_width="72dp"
+        android:layout_height="20dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="100dp"
         android:text="Yes"
@@ -268,8 +270,8 @@
 
     <TextView
         android:id="@+id/tv_2"
-        android:layout_width="54dp"
-        android:layout_height="19dp"
+        android:layout_width="70dp"
+        android:layout_height="17dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="44dp"
         android:text="Chooce"
@@ -277,9 +279,9 @@
         app:layout_constraintTop_toTopOf="@+id/tv_1" />
 
     <TextView
-        android:id="@+id/tv_"
-        android:layout_width="55dp"
-        android:layout_height="19dp"
+        android:id="@+id/tv_3"
+        android:layout_width="73dp"
+        android:layout_height="20dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="84dp"
         android:text="No"
@@ -308,12 +310,12 @@
 
     <ImageView
         android:id="@+id/img_3"
-        android:layout_width="47dp"
-        android:layout_height="32dp"
+        android:layout_width="43dp"
+        android:layout_height="27dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:src="@drawable/img_3"
-        app:layout_constraintStart_toEndOf="@+id/tv_"
+        app:layout_constraintStart_toEndOf="@+id/tv_3"
         app:layout_constraintTop_toBottomOf="@+id/img_2" />
 
 
